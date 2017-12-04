@@ -26,8 +26,8 @@ import math
 def main():
     """ Calls the   TEST   functions in this module. """
     #run_test_sum_more_cosines()
-    run_test_count_sines_from()
-    #run_test_count_sines_vs_cosines()
+    #run_test_count_sines_from()
+    run_test_count_sines_vs_cosines()
 
 
 def run_test_sum_more_cosines():
@@ -132,7 +132,7 @@ def sum_more_cosines(m, n):
 def run_test_count_sines_from():
     """ Tests the   count_sines_from   function. """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement this TEST function.
+    # DONE: 4. Implement this TEST function.
     #   It TESTS the  count_sines_from  function defined below.
     #   Include at least **   6   ** tests (we wrote one for you).
     #              ** Yes, 6 (six) tests. **
@@ -151,7 +151,7 @@ def run_test_count_sines_from():
     print('       actual:  ', answer)
 
     # ------------------------------------------------------------------
-    # TO DO: 4 (continued).
+    # DONE: 4 (continued).
     # Below this comment, add 5 more test cases of your own choosing.
     # ------------------------------------------------------------------
 
@@ -206,7 +206,7 @@ def count_sines_from(m, n):
       -- count_sines_from(9, 9)  returns  1
     """
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # IMPORTANT: As in previous problems in this session,
@@ -281,6 +281,13 @@ def count_sines_vs_cosines(m):
     #   of the RANGE expression, if you happen to know them.
     # ------------------------------------------------------------------
 
+    count = 0  # Initialize to 0 BEFORE the loop
+    for k in range(n):  # Loop
+        if math.sin(k + 1) > math.cos(k + 1):  # If the condition holds:
+            count = count + 1  # Increment INSIDE the loop.
+            print(math.sin(k + 1), math.cos(k + 1), n, k)
+
+    return count
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
