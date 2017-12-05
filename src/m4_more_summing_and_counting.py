@@ -30,8 +30,8 @@ import builtins  # Never necessary, but here for pedagogical reasons
 # ----------------------------------------------------------------------
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_sum_from()
-    run_test_factorial()
+    #run_test_sum_from()
+    #run_test_factorial()
     run_test_count_cosines_from()
     run_test_sum_unit_fractions_from()
 
@@ -168,6 +168,24 @@ def run_test_factorial():
     #   ** uses  math.factorial  as an ORACLE for testing. **
     # ------------------------------------------------------------------
 
+    # Test 3:
+    answer_from_oracle = math.factorial(10)
+    answer_from_my_code = factorial(10)
+    print('Test 3 expected (from oracle):', answer_from_oracle)
+    print('       actual (from my code): ', answer_from_my_code)
+
+    # Test 4:
+    answer_from_oracle = math.factorial(13)
+    answer_from_my_code = factorial(13)
+    print('Test 4 expected (from oracle):', answer_from_oracle)
+    print('       actual (from my code): ', answer_from_my_code)
+
+    # Test 5:
+    answer_from_oracle = math.factorial(18)
+    answer_from_my_code = factorial(18)
+    print('Test 5 expected (from oracle):', answer_from_oracle)
+    print('       actual (from my code): ', answer_from_my_code)
+
 
 def factorial(n):
     """
@@ -185,6 +203,12 @@ def factorial(n):
     # IMPORTANT:  Your solution MUST
     #   use an explicit    for ... in range(...):     statement.
     # ------------------------------------------------------------------
+
+    total = 0  # Initialize to 0 BEFORE the loop
+    for k in range(n):  # Loop
+        total = n * (n-k)  # Accumulate INSIDE the loop.
+
+    return total
 
 
 def run_test_count_cosines_from():
@@ -225,9 +249,39 @@ def run_test_count_cosines_from():
     print('       actual:  ', answer)
 
     # ------------------------------------------------------------------
-    # TO DO: 6 (continued).
+    # DONE: 6 (continued).
     # Below this comment, add 5 more test cases of your own choosing.
     # ------------------------------------------------------------------
+
+    # Test 2:
+    expected = 1
+    answer = count_cosines_from(20, 23, 0.9)
+    print('Test 2 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 3:
+    expected = 1
+    answer = count_cosines_from(7, 8, 0.1)
+    print('Test 3 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 4:
+    expected = 3
+    answer = count_cosines_from(4, 10, 0.1)
+    print('Test 4 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 5:
+    expected = 2
+    answer = count_cosines_from(12, 15, 0.4)
+    print('Test 5 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 6:
+    expected = 1
+    answer = count_cosines_from(15, 20, 0.8)
+    print('Test 6 expected:', expected)
+    print('       actual:  ', answer)
 
 
 def count_cosines_from(m, n, x):
@@ -249,8 +303,17 @@ def count_cosines_from(m, n, x):
       -- count_cosines_from(3, 9, 0.27)  returns  3
       -- count_cosines_from(4, 8, -0.5)  returns  4
     """
+
+    count = 0
+    for k in range((n-m)):
+        if math.cos(k) > x:
+            count = count + 1
+
+    return count
+
+
     # ------------------------------------------------------------------
-    # TODO: 7. Implement and test this function.
+    # DONE: 7. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # IMPORTANT: As in previous problems in this session,
