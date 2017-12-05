@@ -116,6 +116,7 @@ def counting_example(n):
       -- counting_example(0) returns 0
              since the cosine(0) is not positive.
     """
+
     count = 0  # Initialize to 0 BEFORE the loop
     for k in range(n):  # Loop
         if math.cos(k + 1) > 0:  # If the condition holds:
