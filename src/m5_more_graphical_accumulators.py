@@ -28,7 +28,7 @@ def main():
     """ Calls the   TEST   functions in this module. """
     run_test_draw_squares_from_circle()
     run_test_draw_circles_from_rectangle()
-    #run_test_draw_lines_from_rectangles()
+    run_test_draw_lines_from_rectangles()
 
 
 def run_test_draw_squares_from_circle():
@@ -353,11 +353,34 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
       :type window: rg.RoseWindow
       """
 
-    rectangle1 = rg.Rectangle(rg.Point(100,25), rg.Point(150,125))
-    rectangle2 = rg.Rectangle(rg.Point(300,150), rg.Point(400, 175))
+    rectangle1.attach_to(window)
+    rectangle2.attach_to(window)
+
+    center1 = rectangle1.get_center()
+    center2 = rectangle2.get_center()
+
+    line = rg.Line(rg.Point(center1.x, center1.y), rg.Point(center2.x,
+                                                           center2.y))
+    line.attach_to(window)
+
+    bottom_left = rectangle1.get_lower_left_corner()
+    upper_right = rectangle1.get_upper_right_corner()
+
+    x_rad = (bottom_left.x - upper_right.x) / 2
+    y_rad = (bottom_left.y - upper_right.y) / 2
 
 
+    for k in range(n):
+        line2 = rg.Line(rg.Point(center1.x + x_rad*k, center1.y + y_rad*k),
+                        rg.Point(center2.x + x_rad*k, center2.y + y_rad*k))
+        if k % 2 == 1:
+            line2.color = rectangle1.outline_color
+        else:
+            line2.color = rectangle2.outline_color
+        line2.thickness = 5
+        line2.attach_to(window)
 
+    window.render()
 
     # ------------------------------------------------------------------
     # TODO: 5. Implement and test this function.
